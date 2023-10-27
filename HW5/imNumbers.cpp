@@ -5,13 +5,6 @@ using namespace std;
 
 template <typename T>
 
-bool imNumbers<T>::operator=(const imNumbers& num)const
-{
-    return fabs(real - num.real) < EPS && fabs(im - num.im) < EPS;
-}
-
-template <typename T>
-
 double imNumbers<T>::operator()()const
 {
     return sqrt(real * real + im * im);
@@ -19,9 +12,9 @@ double imNumbers<T>::operator()()const
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator+(const imNumbers& rhs)const
+imNumbers<T> imNumbers<T>::operator+(const imNumbers<T>& rhs)const
 {
-    imNumbers result = *this;
+    imNumbers<T> result = *this;
     result.real += rhs.real;
     result.im += rhs.im;
     return result;
@@ -29,9 +22,9 @@ imNumbers<T> imNumbers<T>::operator+(const imNumbers& rhs)const
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator-(const imNumbers& rhs)const
+imNumbers<T> imNumbers<T>::operator-(const imNumbers<T>& rhs)const
 {
-    imNumbers result = *this;
+    imNumbers<T> result = *this;
     result.real -= rhs.real;
     result.im -= rhs.im;
     return result;
@@ -39,9 +32,9 @@ imNumbers<T> imNumbers<T>::operator-(const imNumbers& rhs)const
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator*(const imNumbers& rhs) const
+imNumbers<T> imNumbers<T>::operator*(const imNumbers<T>& rhs) const
 {
-    imNumbers result = *this;
+    imNumbers<T> result = *this;
     result.real = real * rhs.real - im * rhs.im;
     result.im = (real * rhs.im) + (rhs.real * im);
     return result;
@@ -49,9 +42,9 @@ imNumbers<T> imNumbers<T>::operator*(const imNumbers& rhs) const
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator/(const imNumbers& other)const
+imNumbers<T> imNumbers<T>::operator/(const imNumbers<T>& other)const
 {
-    imNumbers result = *this;
+    imNumbers<T> result = *this;
     double denominator = other.real * other.real + other.im * other.im;
     result.real = (real * other.real + im * other.im) / denominator;
     result.im = (im * other.real - real * other.im) / denominator;
@@ -60,7 +53,7 @@ imNumbers<T> imNumbers<T>::operator/(const imNumbers& other)const
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator+=(const imNumbers& other)
+imNumbers<T> imNumbers<T>::operator+=(const imNumbers<T>& other)
 {
     real += other.real;
     im += other.im;
@@ -69,7 +62,7 @@ imNumbers<T> imNumbers<T>::operator+=(const imNumbers& other)
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator-=(const imNumbers& other)
+imNumbers<T> imNumbers<T>::operator-=(const imNumbers<T>& other)
 {
     real -= other.real;
     im -= other.im;
@@ -78,9 +71,9 @@ imNumbers<T> imNumbers<T>::operator-=(const imNumbers& other)
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator*=(const imNumbers& other) {
-    double newReal = (real * other.real) - (im * other.im);
-    double newImaginary = (real * other.im) + (im * other.real);
+imNumbers<T> imNumbers<T>::operator*=(const imNumbers<T>& other) {
+    T newReal = (real * other.real) - (im * other.im);
+    T newImaginary = (real * other.im) + (im * other.real);
     real = newReal;
     im = newImaginary;
     return *this;
@@ -88,12 +81,12 @@ imNumbers<T> imNumbers<T>::operator*=(const imNumbers& other) {
 
 template <typename T>
 
-imNumbers<T> imNumbers<T>::operator/=(const imNumbers& rhs)
+imNumbers<T> imNumbers<T>::operator/=(const imNumbers<T>& rhs)
 {
-    double denominator = (rhs.real * rhs.real) + (rhs.im * rhs.im);
+    T denominator = (rhs.real * rhs.real) + (rhs.im * rhs.im);
 
-    double newReal = ((real * rhs.real) + (im * rhs.im)) / denominator;
-    double newImaginary = ((im * rhs.real) - (real * rhs.im)) / denominator;
+    T newReal = ((real * rhs.real) + (im * rhs.im)) / denominator;
+    T newImaginary = ((im * rhs.real) - (real * rhs.im)) / denominator;
 
     real = newReal;
     im = newImaginary;
@@ -103,7 +96,7 @@ imNumbers<T> imNumbers<T>::operator/=(const imNumbers& rhs)
 
 template <typename T>
 
-bool imNumbers<T>::operator==(const imNumbers& operand2) const
+bool imNumbers<T>::operator==(const imNumbers<T>& operand2) const
 {
     return (real == operand2.real && im == operand2.im);
 }

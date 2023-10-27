@@ -2,10 +2,21 @@
 //
 
 #include <iostream>
+#include "cstack.h"
+#include "imNumbers.h"
+
+using namespace std;
+
+
 
 int main()
 {
     std::cout << "Hello World!\n";
+    imNumbers<double> n;
+    cstack<int> a;
+    a.push(1);
+    return 0;
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

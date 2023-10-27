@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <iostream>
 #define EPS 1e-10
 
 template <typename T>
@@ -11,23 +12,23 @@ public:
     T im;
 
     imNumbers(T real = 0, T im = 0) : real(real), im(im) {}
-    friend std::ostream& operator<<(std::ostream& os, const imNumbers& complex);
-    friend imNumbers operator!(const imNumbers& c)
+    friend std::ostream& operator<<(std::ostream& os, const imNumbers<T>& complex);
+    friend imNumbers<T> operator!(const imNumbers<T>& c)
     {
-        return imNumbers(c.real, -c.im);
+        return imNumbers<T>(c.real, -c.im);
     };
 
-    bool operator=(const imNumbers& num)const;
+    bool operator=(const imNumbers<T>& num)const;
     double operator()() const;
-    bool operator==(const imNumbers& operand2) const;
-    imNumbers operator+(const imNumbers& rhs)const;
-    imNumbers operator-(const imNumbers& rhs)const;
-    imNumbers operator*(const imNumbers& rhs) const;
-    imNumbers operator/(const imNumbers& other)const;
-    imNumbers operator+=(const imNumbers& other);
-    imNumbers operator-=(const imNumbers& other);
-    imNumbers operator*=(const imNumbers& other);
-    imNumbers operator/=(const imNumbers& rhs);
+    bool operator==(const imNumbers<T>& operand2) const;
+    imNumbers<T> operator+(const imNumbers<T>& rhs)const;
+    imNumbers<T> operator-(const imNumbers<T>& rhs)const;
+    imNumbers<T> operator*(const imNumbers<T>& rhs) const;
+    imNumbers<T> operator/(const imNumbers<T>& other)const;
+    imNumbers<T> operator+=(const imNumbers<T>& other);
+    imNumbers<T> operator-=(const imNumbers<T>& other);
+    imNumbers<T> operator*=(const imNumbers<T>& other);
+    imNumbers<T> operator/=(const imNumbers<T>& rhs);
 };
 
 template <typename T>
